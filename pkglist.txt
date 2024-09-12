@@ -51,6 +51,7 @@ onefetch
 phpstorm
 phpstorm-jre
 plasma-browser-integration
+plow
 pnpm
 qbe
 restish
@@ -66,10 +67,13 @@ tmux
 tmux-plugin-manager
 ttf-firacode-nerd
 vim
+vscodium-bin
 watchexec
 waybar
+wev
 yay-bin
 yay-bin-debug
+zig
 zsh
 zsh-autocomplete-git
 zsh-syntax-highlighting
