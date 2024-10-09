@@ -57,7 +57,7 @@
           # standard
           sysvsem
           tokenizer
-          xml
+          # xml
           xmlreader
           xmlwriter
           # Zend OPcache
@@ -69,8 +69,6 @@
       fpmConfPath = ./php-fpm.conf;
     in
       php81.overrideAttrs (old: rec {
-        # extensions = old.extensions ++ [ extRedis ];  # Add the Redis extension
-        # Define the installPhase explicitly, or append if it exists
         postInstall = ''
           ${if old ? installPhase then old.installPhase else ""}
           # Copy custom php-fpm.conf to the output path
