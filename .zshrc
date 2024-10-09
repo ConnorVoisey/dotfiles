@@ -95,8 +95,6 @@ eval $(thefuck --alias)
 export PATH=$PATH:~/Downloads/roc_nightly-linux_x86_64-2024-03-25-4dca054
 export PATH=~/.cache/rebar3/bin:$PATH
 
-. "$HOME/.atuin/bin/env"
-
 eval "$(atuin init zsh)"
 source /usr/share/nvm/init-nvm.sh
 
