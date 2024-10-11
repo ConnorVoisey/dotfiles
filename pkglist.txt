@@ -3,6 +3,8 @@ base
 base-devel
 btop
 c-client
+cargo-binstall
+cargo-watch
 cbonsai
 chaotic-keyring
 chaotic-mirrorlist
@@ -49,6 +51,7 @@ linux-headers
 llvm
 llvm14
 mako
+mariadb
 mkcert
 nano
 neofetch

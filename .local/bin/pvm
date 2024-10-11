@@ -1,0 +1,128 @@
+#!/usr/bin/env bash
+
+set -e
+
+COLOR_RED='\033[0;31m'
+COLOR_YELLOW='\033[1;33m'
+COLOR_RESET='\033[0m'
+
+SILENT=false
+
+print() {
+	if [[ "${SILENT}" = false ]]; then
+		echo -e "$@"
+	fi
+}
+
+usage() {
+	printf "%s\n" \
+		"pvm {version}" \
+		"" \
+		"Php Version Managment"
+
+	printf "\n%s\n" "Options"
+	printf "\t%s\n\t\t%s\n\n" \
+		"{version}" "Version is optional"
+}
+
+error() {
+    print "${COLOR_RED}"
+    print "${1}"
+    print "${COLOR_RESET}"
+}
+
+info() {
+    print "${COLOR_YELLOW}"
+    print "${1}"
+    print "${COLOR_RESET}"
+}
+
+if [[ "$EUID" -eq 0 ]]; then
+    error "Do not run this script as root"
+    usage
+	exit 1
+fi
+
+PHP_VER=$1
+if [[ "$PHP_VER" = '' ]]; then
+    echo $PHP_VER
+    echo "Select a php version"
+    PHP_VER=$(echo '
+    php56
+    php71
+    php72
+    php73
+    php74
+    php80
+    php81
+    php82
+    php83
+    ' | fzf --height=30%)
+fi
+
+normalize_version() {
+    local input=$1
+    case "$input" in
+        php5.6 | php56 | 5.6 | 56)
+            echo "php56"
+            ;;
+        php7.1 | php71 | 7.1 | 71)
+            echo "php71"
+            ;;
+        php7.2 | php72 | 7.2 | 72)
+            echo "php72"
+            ;;
+        php7.3 | php73 | 7.3 | 73)
+            echo "php73"
+            ;;
+        php7.4 | php74 | 7.4 | 74)
+            echo "php74"
+            ;;
+        php8.0 | php80 | 8.0 | 80)
+            echo "php80"
+            ;;
+        php8.1 | php81 | 8.1 | 81)
+            echo "php81"
+            ;;
+        php8.2 | php82 | 8.2 | 82)
+            echo "php82"
+            ;;
+        php8.3 | php83 | 8.3 | 83)
+            echo "php83"
+            ;;
+        *)
+            echo "Invalid"
+            ;;
+    esac
+}
+PHP_VER=$(normalize_version $PHP_VER)
+if [[ "$PHP_VER" = "Invalid" ]]; then
+    echo "invalid version option, options are:
+    56
+    71
+    72
+    73
+    74
+    80
+    81
+    82
+    83
+
+Allowed formats are:
+    83
+    8.3
+    php83
+
+Example Usage:
+    pvm 83
+
+Or choose using fzf:
+    pvm"
+    exit 1;
+fi
+
+rm -f /home/$USER/.local/bin/php
+ln -s /home/$USER/dotfiles/flakes/${PHP_VER}/result/bin/php /home/$USER/.local/bin/php
+
+php -v
+

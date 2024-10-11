@@ -1,5 +1,5 @@
 {
-  description = "builds php 81 with fpm and extensions";
+  description = "builds php 56 with fpm and extensions";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -7,8 +7,8 @@
   };
 
   outputs = { self, nixpkgs, phps }: {
-    packages.x86_64-linux.default =
-       phps.packages.x86_64-linux.php81.buildEnv {
+    packages.x86_64-linux.default = 
+       phps.packages.x86_64-linux.php56.buildEnv {
         extensions = ({ enabled, all }: enabled ++ (with all; [
           bcmath
           calendar
@@ -51,7 +51,7 @@
           # SimpleXML
           soap
           sockets
-          sodium
+          # sodium
           # SPL
           sqlite3
           # standard
