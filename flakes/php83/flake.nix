@@ -67,8 +67,12 @@
           redis
         ]));
         extraConfig = ''
-            xdebug.mode=debug
-            memory_limit = 2G
+xdebug.mode=debug
+memory_limit = 2G
+
+[xdebug]
+xdebug.mode = debug
+xdebug.discover_client_host = 1
         '';
       };
   };
