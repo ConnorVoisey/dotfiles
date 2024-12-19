@@ -1,4 +1,4 @@
-# # If not running interactively, don't do anything
+
 # case $- in
 #     *i*) ;;
 #       *) return;;
@@ -101,3 +101,7 @@ eval "$(atuin init zsh)"
 source /usr/share/nvm/init-nvm.sh
 
 export TERM='xterm-kitty'
+export PATH=$PATH:~/.cargo/bin/
+export PATH=$PATH:~/.local/bin/
+
+bindkey '^x' recent-paths

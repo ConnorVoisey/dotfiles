@@ -16,3 +16,6 @@ configuration{
 
 @theme "~/.config/rofi/catppuccin.rasi"
 
+#mainbox {
+    border-radius: 20px;
+}
