@@ -1,5 +1,5 @@
 {
-  description = "builds php 81 with fpm and extensions";
+  description = "builds php 71 with fpm and extensions";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -7,8 +7,8 @@
   };
 
   outputs = { self, nixpkgs, phps }: {
-    packages.x86_64-linux.default =
-       phps.packages.x86_64-linux.php81.buildEnv {
+    packages.x86_64-linux.default = 
+       phps.packages.x86_64-linux.php71.buildEnv {
         extensions = ({ enabled, all }: enabled ++ (with all; [
           bcmath
           calendar
@@ -28,7 +28,6 @@
           iconv
           imap
           intl
-          iconv
           # json
           ldap
           # libxml
@@ -52,7 +51,7 @@
           # SimpleXML
           soap
           sockets
-          sodium
+          # sodium
           # SPL
           sqlite3
           # standard
@@ -72,8 +71,10 @@
       extraConfig = ''
 xdebug.mode=debug
 memory_limit = 2G
+xdebug.remote_enable=1
 
 [xdebug]
+xdebug.remote_enable=1
 xdebug.mode = debug
 xdebug.discover_client_host = 1
       '';

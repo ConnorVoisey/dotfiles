@@ -1,5 +1,5 @@
 {
-  description = "builds php 81 with fpm and extensions";
+  description = "builds php 84 with fpm and extensions";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -7,8 +7,8 @@
   };
 
   outputs = { self, nixpkgs, phps }: {
-    packages.x86_64-linux.default =
-       phps.packages.x86_64-linux.php81.buildEnv {
+    packages.x86_64-linux.default = 
+       phps.packages.x86_64-linux.php84.buildEnv {
         extensions = ({ enabled, all }: enabled ++ (with all; [
           bcmath
           calendar
@@ -28,7 +28,6 @@
           iconv
           imap
           intl
-          iconv
           # json
           ldap
           # libxml
@@ -38,22 +37,22 @@
           openssl
           pcntl
           # pcre
-          # PDO
+          pdo
           pdo_mysql
           # PDO_ODBC
           pdo_pgsql
           pdo_sqlite
           pgsql
-          # Phar
+          # phar
           posix
           readline
-          # Reflection
+          # reflection
           session
-          # SimpleXML
+          simplexml
           soap
           sockets
           sodium
-          # SPL
+          # spl
           sqlite3
           # standard
           sysvsem
@@ -67,16 +66,15 @@
           zlib
           redis
         ]));
-      };
-      fpmConfPath = ./php-fpm.conf;
-      extraConfig = ''
+        extraConfig = ''
 xdebug.mode=debug
 memory_limit = 2G
 
 [xdebug]
 xdebug.mode = debug
 xdebug.discover_client_host = 1
-      '';
+        '';
+      };
   };
 }
 
