@@ -87,6 +87,7 @@ export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export EDITOR=nvim
 export PATH=$PATH:~/.local/bin
+export PATH=$PATH:/home/connor/.cargo/bin
 eval $(thefuck --alias)
 
 # opam configuration
@@ -99,3 +100,12 @@ eval "$(atuin init zsh)"
 source /usr/share/nvm/init-nvm.sh
 
 export TERM='xterm-kitty'
+
+bindkey '^x' recent-paths
+
+export FZF_DEFAULT_COMMAND='fd --type file'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+export XDG_CONFIG_HOME=$HOME/.config
+export PASSWORD_STORE_USE_PINENTRY=0
+export GIT_CONFIG_GLOBAL=$HOME/.gitconfig

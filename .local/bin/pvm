@@ -47,17 +47,7 @@ PHP_VER=$1
 if [[ "$PHP_VER" = '' ]]; then
     echo $PHP_VER
     echo "Select a php version"
-    PHP_VER=$(echo '
-    php56
-    php71
-    php72
-    php73
-    php74
-    php80
-    php81
-    php82
-    php83
-    ' | fzf --height=30%)
+    PHP_VER=$(gum choose '5.6' '7.1' '7.2' '7.3' '7.4' '8.0' '8.1' '8.2' '8.3' '8.4')
 fi
 
 normalize_version() {
@@ -90,6 +80,9 @@ normalize_version() {
         php8.3 | php83 | 8.3 | 83)
             echo "php83"
             ;;
+        php8.4 | php84 | 8.4 | 84)
+            echo "php84"
+            ;;
         *)
             echo "Invalid"
             ;;
@@ -107,6 +100,7 @@ if [[ "$PHP_VER" = "Invalid" ]]; then
     81
     82
     83
+    84
 
 Allowed formats are:
     83
