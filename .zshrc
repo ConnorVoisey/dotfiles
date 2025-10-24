@@ -9,7 +9,7 @@
 #     exec tmux new -A -s "$session_name" -c "${HOME}"
 # fi
 setopt interactivecomments
-source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source /home/connor/dotfiles/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # exiting vim cursor fix
 _fix_cursor() {
@@ -22,7 +22,7 @@ eval "$(starship init zsh)"
 
 # promptinit
 # prompt adam1
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Set up the prompt
 autoload -Uz promptinit
@@ -95,13 +95,12 @@ eval $(thefuck --alias)
 export PATH=$PATH:~/Downloads/roc_nightly-linux_x86_64-2024-03-25-4dca054
 export PATH=~/.cache/rebar3/bin:$PATH
 
-. "$HOME/.atuin/bin/env"
-
 eval "$(atuin init zsh)"
-source /usr/share/nvm/init-nvm.sh
 
 export TERM='xterm-kitty'
 export PATH=$PATH:~/.cargo/bin/
 export PATH=$PATH:~/.local/bin/
 
 bindkey '^x' recent-paths
+
+ export PNPM_HOME="$HOME/.local/share/pnpm"

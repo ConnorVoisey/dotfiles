@@ -1,3 +1,2 @@
-yay -Syu --needed --noconfirm - < $HOME/dotfiles/pkglist.txt
-
-yay -Syu --needed --noconfirm
+sudo dnf upgrade -y
+sudo dnf install -y $(cat $HOME/dotfiles/pkglist.txt)

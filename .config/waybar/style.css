@@ -19,9 +19,11 @@ window#waybar>box {
 .modules-center {
 	background-color: #363a4f;
     margin: 2px 0 0 0;
+    color: white;
 }
 .modules-right {
     margin: 2px 10px 0 0;
+    color: white;
 }
 /*-----modules indv----*/
 #workspaces button {

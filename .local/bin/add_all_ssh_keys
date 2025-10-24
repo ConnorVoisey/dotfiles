@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+echo "$SSH_AGENT_PID"
+echo "$SSH_AUTH_SOCK"
+
+# Ensure the SSH agent is running
+if [ -z "$SSH_AGENT_PID" ] || [ -z "$SSH_AUTH_SOCK" ]; then
+    eval "$(ssh-agent -s)"
+fi
+
+export GPG_AGENT_INFO=$(gpgconf --list-dirs agent-socket)
+
+SSH_DIR="/home/connor/.ssh"
+SEARCH_DIR=$SSH_DIR
+if [[ $# -eq 0 ]] ; then
+    SEARCH_DIR=$SSH_DIR
+else
+    SEARCH_DIR=$(realpath $1)
+fi
+
+# Add keys that do not require a password
+# ssh-add /home/connor/.ssh/id_ed25519_bitbucket
+
+find "${SEARCH_DIR}" -type f \( ! -name "*.pub" -a ! -name "config" \) -print0 | xargs -0 -P 4 -I '{}' add_ssh_key '{}'

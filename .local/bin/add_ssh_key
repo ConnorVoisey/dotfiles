@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+ 
+key="${1}"
+key_path=$(echo "$key" | awk -F '.ssh/' '{print $2}');
+pass_path="ssh/${key_path}"
+if gopass show "${pass_path}" &>/dev/null; then
+    # Retrieve the passphrase from pass
+    PASS=$(gopass "${pass_path}")
+    # Check that the key has a passphrase
+    if [ -n "${PASS}" ]; then
+        # Use expect to interact with ssh-add and provide the password
+        PASS=$(printf '%q' "${PASS}")
+        echo "$key"
+        expect << EOF
+spawn ssh-add "${key}"
+expect "Enter passphrase for ${key}:"
+send "${PASS}\n"
+expect eof
+EOF
+    fi
+fi
