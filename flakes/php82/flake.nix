@@ -1,5 +1,5 @@
 {
-  description = "builds php 83 with fpm and extensions";
+  description = "builds php 82 with fpm and extensions";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -8,7 +8,7 @@
 
   outputs = { self, nixpkgs, phps }: {
     packages.x86_64-linux.default = 
-       phps.packages.x86_64-linux.php83.buildEnv {
+       phps.packages.x86_64-linux.php82.buildEnv {
         extensions = ({ enabled, all }: enabled ++ (with all; [
           bcmath
           calendar

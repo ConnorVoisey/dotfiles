@@ -5,7 +5,7 @@ set -o pipefail  # Capture failures in pipes
 set -u  # Treat unset variables as errors
 
 BASE_DIR="$(pwd)"
-PHP_VER="php83"
+PHP_VER="php74"
 PHP_FPM_SERVICE="${PHP_VER}-fpm.service"
 
 # Helper function to log error and exit
@@ -63,9 +63,6 @@ fi
 # Start the service
 echo "Starting PHP-FPM service..."
 sudo systemctl start "$PHP_FPM_SERVICE" || { echo "Failed to start PHP-FPM service."; exit 1; }
-
-echo "Restarting PHP-FPM service... (reload config if already running)"
-sudo systemctl restart "$PHP_FPM_SERVICE" || { echo "Failed to restart PHP-FPM service."; exit 1; }
 
 echo "Script completed successfully."
 

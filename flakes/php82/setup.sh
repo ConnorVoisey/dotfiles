@@ -5,7 +5,7 @@ set -o pipefail  # Capture failures in pipes
 set -u  # Treat unset variables as errors
 
 BASE_DIR="$(pwd)"
-PHP_VER="php83"
+PHP_VER="php82"
 PHP_FPM_SERVICE="${PHP_VER}-fpm.service"
 
 # Helper function to log error and exit

@@ -1,0 +1,16 @@
+[Unit]
+Description=Swww Daemon
+After=network.target
+
+[Service]
+User=connor
+Group=connor
+Type=simple
+ExecStart=swww-daemon
+Environment=WAYLAND_DISPLAY=wayland-1
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
