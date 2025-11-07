@@ -8,3 +8,4 @@ alias c='clear'
 alias :q='exit'
 alias :q!='shutdown now'
 alias ssh='TERM=screen ssh'
+alias f="$(pay-respects zsh)"

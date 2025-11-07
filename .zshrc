@@ -87,7 +87,6 @@ export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export EDITOR=nvim
 export PATH=$PATH:~/.local/bin
-eval $(thefuck --alias)
 
 # opam configuration
 [[ ! -r ~/.opam/opam-init/init.zsh ]] || source ~/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
@@ -104,3 +103,7 @@ export PATH=$PATH:~/.local/bin/
 bindkey '^x' recent-paths
 
  export PNPM_HOME="$HOME/.local/share/pnpm"
+
+eval "$(pay-respects zsh --alias --nocnf)"
+
+. ~/.local/bin/ssh_agent_start.sh

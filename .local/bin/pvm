@@ -57,6 +57,7 @@ if [[ "$PHP_VER" = '' ]]; then
     php81
     php82
     php83
+    php84
     ' | fzf --height=30%)
 fi
 
@@ -90,6 +91,9 @@ normalize_version() {
         php8.3 | php83 | 8.3 | 83)
             echo "php83"
             ;;
+        php8.4 | php84 | 8.4 | 84)
+            echo "php84"
+            ;;
         *)
             echo "Invalid"
             ;;
@@ -107,6 +111,7 @@ if [[ "$PHP_VER" = "Invalid" ]]; then
     81
     82
     83
+    84
 
 Allowed formats are:
     83
